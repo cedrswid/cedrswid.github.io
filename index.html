@@ -7,494 +7,530 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;background:#fafaf9;color:#1a1a18;padding:40px 24px 80px;}
-.wrap{max-width:900px;margin:0 auto;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;background:#fafaf9;color:#1a1a18;display:flex;flex-direction:column;}
 
-/* ── HERO ── */
-.hero{padding-bottom:28px;border-bottom:1px solid #e5e4e0;margin-bottom:36px;}
-.hero h1{font-size:22px;font-weight:500;margin-bottom:4px;}
-.hero-sub{font-size:13px;color:#6b6b68;margin-bottom:14px;}
-.hero-links{display:flex;gap:10px;flex-wrap:wrap;}
-.hero-links a{font-size:12px;color:#7F77DD;text-decoration:none;padding:3px 10px;border:1px solid #AFA9EC;border-radius:100px;background:#EEEDFE;}
-.hero-links a:hover{background:#CECBF6;}
+/* ── HEADER ── */
+.site-header{padding:16px 28px;border-bottom:1px solid #e5e4e0;flex-shrink:0;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.header-left h1{font-size:17px;font-weight:500;margin-bottom:1px;}
+.header-left p{font-size:12px;color:#6b6b68;}
+.header-links{display:flex;gap:8px;}
+.header-links a{font-size:12px;color:#7F77DD;text-decoration:none;padding:3px 10px;border:1px solid #AFA9EC;border-radius:100px;background:#EEEDFE;}
+.header-links a:hover{background:#CECBF6;}
 
-/* ── TIMELINE ── */
-.tl-section{margin-bottom:48px;}
-.tl-section h2{font-size:11px;font-weight:500;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;}
-#tl-container{position:relative;}
-.tl-row{display:flex;align-items:center;margin-bottom:2px;position:relative;z-index:1;}
-.tl-name{width:190px;flex-shrink:0;padding-right:14px;text-align:right;}
-.tl-name .co{font-size:12px;font-weight:500;color:#1a1a18;line-height:1.35;}
-.tl-name .sec{font-size:10px;color:#aaa;margin-top:1px;}
-.tl-name .sub{font-size:10px;color:#888;font-style:italic;line-height:1.35;}
-.tl-track{flex:1;position:relative;height:22px;}
-.tl-bar{position:absolute;top:2px;height:18px;border-radius:4px;cursor:default;transition:filter .12s;}
-.tl-bar:hover{filter:brightness(1.13);}
-.tl-sep{height:.5px;background:#e5e4e0;margin:4px 0 4px 190px;opacity:.35;position:relative;z-index:1;}
-.tl-grid{position:absolute;top:0;bottom:0;left:190px;right:0;pointer-events:none;z-index:0;}
-.tl-gl{position:absolute;top:0;bottom:0;width:.5px;background:#e5e4e0;}
-.tl-now{position:absolute;top:0;bottom:0;width:1.5px;background:#E24B4A;opacity:.4;z-index:5;}
-.tl-yr{font-size:18px;margin-left:190px;margin-bottom:8px;position:relative;height:18px;}
-.tl-yr span{position:absolute;font-size:10px;font-family:'JetBrains Mono',monospace;color:#aaa;transform:translateX(-50%);}
+/* ── TIMELINE (dans content) ── */
+.section-label{font-size:10px;font-weight:500;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;font-family:'JetBrains Mono',monospace;}
 
-/* ── RESUME ── */
-.resume-section h2{font-size:11px;font-weight:500;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;}
-.company{margin-bottom:32px;}
-.company-header{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid #e5e4e0;margin-bottom:14px;flex-wrap:wrap;}
-.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.co-name{font-size:15px;font-weight:500;}
+/* ── BODY ── */
+.page-body{display:flex;flex:1;overflow:hidden;}
+
+/* ── MASTER (left sidebar) ── */
+.sidebar{width:230px;flex-shrink:0;border-right:1px solid #e5e4e0;overflow-y:auto;background:#fafaf9;}
+.sb-section-head{font-size:10px;font-weight:500;color:#aaa;letter-spacing:.08em;text-transform:uppercase;padding:14px 16px 6px;font-family:'JetBrains Mono',monospace;}
+.sb-top-link{display:flex;align-items:center;gap:8px;padding:12px 16px;font-size:13px;font-weight:500;color:#1a1a18;text-decoration:none;border-right:2px solid transparent;transition:background .1s,border-color .12s;}
+.sb-top-link:hover{background:#efeee8;}
+.sb-top-link.active{background:#efeee8;border-right-color:#7F77DD;color:#7F77DD;}
+.sb-top-icon{font-size:14px;color:#aaa;font-style:normal;}
+.sb-item{display:flex;align-items:center;gap:9px;padding:7px 16px;cursor:pointer;border-right:2px solid transparent;transition:background .1s,border-color .12s;text-decoration:none;}
+.sb-item:hover{background:#efeee8;}
+.sb-item.active{background:#efeee8;border-right-color:#7F77DD;}
+.sb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sb-body{flex:1;min-width:0;}
+.sb-name{font-size:12px;font-weight:500;color:#1a1a18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sb-sub{font-size:10px;color:#aaa;font-family:'JetBrains Mono',monospace;margin-top:1px;}
+.sb-sep{height:1px;background:#e5e4e0;margin:4px 14px;opacity:.5;}
+
+/* ── CONTENT (right scrollable) ── */
+.content{flex:1;overflow-y:auto;padding:32px 40px;}
+
+/* ── COMPANY SECTION ── */
+.co-section{margin-bottom:56px;scroll-margin-top:32px;}
+.co-header{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid #e5e4e0;margin-bottom:20px;flex-wrap:wrap;}
+.co-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+.co-name{font-size:18px;font-weight:500;}
 .co-meta{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:11px;color:#888;font-family:'JetBrains Mono',monospace;}
 .badge{font-size:10px;padding:1px 7px;border-radius:100px;border:1px solid;}
 .b-active{background:#eeecfe;color:#3c3489;border-color:#afa9ec;}
 .b-stage{background:#faeeda;color:#633806;border-color:#fac775;}
 .b-interlude{background:#e1f5ee;color:#085041;border-color:#9fe1cb;}
 .b-prev{background:#f1f0eb;color:#666;border-color:#d3d1c7;}
-.sector{font-size:11px;padding:2px 8px;border-radius:100px;border:1px solid #e5e4e0;color:#888;background:#f5f4f0;}
-.role{padding-left:20px;margin-bottom:14px;}
-.role+.role{padding-top:12px;border-top:1px dashed #e5e4e0;}
-.role-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.b-phare{background:#eeecfe;color:#3c3489;border-color:#afa9ec;}
+.sector-badge{font-size:11px;padding:2px 8px;border-radius:100px;border:1px solid #e5e4e0;color:#888;background:#f5f4f0;}
+
+/* Role */
+.role-block{padding-left:0;margin-bottom:16px;}
+.role-block+.role-block{padding-top:14px;border-top:1px dashed #e5e4e0;}
+.role-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:9px;}
 .role-title{font-size:13px;font-weight:500;}
 .role-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;}
-.sl{font-size:10px;font-weight:500;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
-.sb{margin-bottom:9px;}
-.row{display:flex;gap:6px;font-size:12px;color:#555;line-height:1.5;margin-bottom:3px;}
-.row::before{content:'–';color:#ccc;flex-shrink:0;margin-top:1px;}
-.tags{display:flex;flex-wrap:wrap;gap:4px;}
-.tag{font-size:11px;padding:2px 8px;border-radius:100px;background:#f1f0eb;border:1px solid #ddd;color:#555;}
-.tag.hi{background:#eeecfe;border-color:#afa9ec;color:#3c3489;}
-.tag.new{background:#e1f5ee;border-color:#9fe1cb;color:#085041;}
-.divider{height:1px;background:#e5e4e0;margin:24px 0;}
-table.evo{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px;}
+
+/* Sub-sections */
+.ds{margin-bottom:14px;}
+.ds-label{font-size:10px;font-weight:500;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+.ds-text{font-size:13px;color:#555;line-height:1.6;}
+.ds-row{display:flex;gap:6px;font-size:13px;color:#555;line-height:1.5;margin-bottom:3px;}
+.ds-row::before{content:'–';color:#ccc;flex-shrink:0;margin-top:1px;}
+
+/* Stack grid */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;}
+.sg{background:#f1f0eb;border-radius:8px;padding:10px 12px;}
+.sg-label{font-size:9px;font-weight:500;color:#aaa;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
+.sg-pills{display:flex;flex-wrap:wrap;gap:4px;}
+.sp{font-size:11px;padding:2px 7px;border-radius:100px;background:#fafaf9;border:1px solid #e5e4e0;color:#555;}
+
+/* Evo table */
+table.evo{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:4px;}
 table.evo th{text-align:left;font-size:10px;color:#aaa;letter-spacing:.07em;text-transform:uppercase;padding:0 10px 6px 0;border-bottom:1px solid #e5e4e0;}
-table.evo td{padding:7px 10px 7px 0;border-bottom:1px solid #f0efe9;vertical-align:top;color:#555;}
+table.evo td{padding:6px 10px 6px 0;border-bottom:1px solid #f0efe9;vertical-align:top;color:#555;}
 table.evo tr:last-child td{border-bottom:none;}
 table.evo td:first-child{font-family:'JetBrains Mono',monospace;font-size:11px;color:#aaa;white-space:nowrap;}
 table.evo td:nth-child(2){font-weight:500;color:#1a1a18;}
 .tp{display:inline-block;font-size:10px;padding:1px 6px;border-radius:100px;background:#f1f0eb;border:1px solid #ddd;color:#555;margin:1px 2px 1px 0;}
 .tp.new{background:#e1f5ee;border-color:#9fe1cb;color:#085041;}
-.note{font-size:11px;color:#aaa;font-style:italic;margin-top:4px;}
+
+/* Mobile */
+@media(max-width:700px){
+  html,body{height:auto;overflow:auto;}
+  .page-body{flex-direction:column;}
+  .sidebar{width:100%;border-right:none;border-bottom:1px solid #e5e4e0;overflow-y:visible;}
+  .content{padding:20px 16px;}
+  .site-header{padding:14px 16px;}
+  .tl-section{padding:12px 16px 10px;}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- ══ HERO ══ -->
-  <div class="hero">
-    <h1>Cédric Swiderski</h1>
-    <p class="hero-sub">Développeur fullstack · Flutter · Python · QlikSense · Moselle</p>
-    <div class="hero-links">
+<!-- HEADER -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>Cédric Swiderski</h1>
+      <p>Développeur fullstack · Flutter · Python · QlikSense · Moselle</p>
+    </div>
+    <div class="header-links">
       <a href="https://github.com/cedrswid" target="_blank">github.com/cedrswid</a>
-      <a href="https://www.linkedin.com/in/cswiderski/" target="_blank">linkedin.com/in/cswiderski</a>
+      <a href="https://www.linkedin.com/in/cswiderski/" target="_blank">LinkedIn</a>
     </div>
   </div>
+</div>
 
-  <!-- ══ TIMELINE ══ -->
-  <div class="tl-section">
-    <h2>Chronologie</h2>
-    <div id="tl-container"></div>
-  </div>
 
-  <!-- ══ RESUME ══ -->
-  <div class="resume-section">
-    <h2>Détail des expériences</h2>
+
+<!-- BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR (master) -->
+  <nav class="sidebar" id="sidebar">
+    <a class="sb-top-link" href="#chronologie" id="link-chronologie">
+      <i class="sb-top-icon">◎</i>
+      <span>Chronologie</span>
+    </a>
+    <div class="sb-sep"></div>
+    <div class="sb-section-head">Expériences</div>
+    <a class="sb-item" href="#4murs"><div class="sb-dot" style="background:#7F77DD"></div><div class="sb-body"><div class="sb-name">4MURS</div><div class="sb-sub">2019 – aujourd'hui</div></div></a>
+    <div class="sb-sep" style="margin-left:16px;margin-right:16px;"></div>
+    <div class="sb-section-head" style="padding-top:8px;">Perso / Asso</div>
+    <a class="sb-item" href="#perso"><div class="sb-dot" style="background:#888780"></div><div class="sb-body"><div class="sb-name">Perso / Freelance</div><div class="sb-sub">2017 – aujourd'hui</div></div></a>
+    <a class="sb-item" href="#add"><div class="sb-dot" style="background:#9B7FDD"></div><div class="sb-body"><div class="sb-name">Associatif (ADD)</div><div class="sb-sub">2022 – aujourd'hui</div></div></a>
+    <div class="sb-sep" style="margin-left:16px;margin-right:16px;"></div>
+    <div class="sb-section-head" style="padding-top:8px;">Historique</div>
+    <a class="sb-item" href="#irlande"><div class="sb-dot" style="background:#2dd4a0"></div><div class="sb-body"><div class="sb-name">Séjour Irlande</div><div class="sb-sub">2019</div></div></a>
+    <a class="sb-item" href="#jfa"><div class="sb-dot" style="background:#1D9E75"></div><div class="sb-body"><div class="sb-name">JFA</div><div class="sb-sub">2016 – 2019</div></div></a>
+    <a class="sb-item" href="#bonanza"><div class="sb-dot" style="background:#5baef5"></div><div class="sb-body"><div class="sb-name">Bonanza</div><div class="sb-sub">2016 – 2017</div></div></a>
+    <a class="sb-item" href="#arpitec"><div class="sb-dot" style="background:#D85A30"></div><div class="sb-body"><div class="sb-name">ARPITEC</div><div class="sb-sub">2013 – 2015</div></div></a>
+    <a class="sb-item" href="#nikko"><div class="sb-dot" style="background:#BA7517"></div><div class="sb-body"><div class="sb-name">NIKKO RACING</div><div class="sb-sub">2012</div></div></a>
+    <a class="sb-item" href="#stef"><div class="sb-dot" style="background:#378ADD"></div><div class="sb-body"><div class="sb-name">STEF-TFE</div><div class="sb-sub">2011</div></div></a>
+  </nav>
+
+  <!-- CONTENT (detail) -->
+  <main class="content" id="content">
+
+    <!-- CHRONOLOGIE -->
+    <section class="co-section" id="chronologie" style="margin-bottom:48px;">
+      <div class="co-header" style="border-bottom:1px solid #e5e4e0;padding-bottom:14px;margin-bottom:20px;">
+        <span class="co-name" style="font-size:16px;">Chronologie</span>
+      </div>
+      <div id="tl-container"></div>
+    </section>
 
     <!-- 4MURS -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#7F77DD"></div>
+    <section class="co-section" id="4murs">
+      <div class="co-header">
+        <div class="co-dot" style="background:#7F77DD"></div>
         <span class="co-name">4MURS</span>
-        <span class="sector">Retail / Déco intérieure</span>
+        <span class="sector-badge">Retail / Déco intérieure</span>
         <div class="co-meta">03/2019 – Aujourd'hui <span class="badge b-active">En poste</span></div>
       </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Évolution des responsabilités</span><span class="role-date">2019 → 2026</span></div>
-        <table class="evo">
-          <thead><tr><th>Période</th><th>Rôle(s)</th><th>Technologies ajoutées</th></tr></thead>
-          <tbody>
-            <tr><td>2019</td><td>Développeur ERP</td><td><span class="tp new">D3 Rocket Software</span><span class="tp new">Pick Basic</span><span class="tp new">SGBDR MV</span></td></tr>
-            <tr><td>2020</td><td>Développeur ERP · Data Architect · Data Analyst · Data Scientist</td><td><span class="tp new">Qlik</span><span class="tp new">QlikScript</span><span class="tp new">ETL</span><span class="tp new">PostgreSQL</span></td></tr>
-            <tr><td>2021</td><td>Développeur ERP · Data · Développeur · Référent NF525</td><td><span class="tp new">QlikSense</span><span class="tp new">Python</span><span class="tp new">Chorus / PISTE</span><span class="tp">Ruby → Python (migration complète)</span></td></tr>
-            <tr><td>2024</td><td>Développeur ERP · Data · Référent NF525 · Développeur mobile</td><td><span class="tp new">Flutter</span><span class="tp new">Dart</span><span class="tp new">SQLite</span><span class="tp new">Imprimantes HP / Zebra</span></td></tr>
-            <tr><td>2025–2026</td><td>Développeur Web</td><td><span class="tp new">Shopify</span><span class="tp new">Web API</span><span class="tp new">GitLab</span><span class="tp new">CI/CD</span><span class="tp new">Docker</span><span class="tp new">Docker-compose</span></td></tr>
-          </tbody>
-        </table>
-        <div class="sb"><div class="sl">Description</div><div class="row">Marque française historique du papier peint (fondée en 1969) — développement et maintenance de l'ensemble des outils numériques internes</div></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Analyse des besoins métier, rédaction des spécifications techniques et fonctionnelles</div>
-          <div class="row">Définition et réalisation des phases de tests (techniques, fonctionnels)</div>
-          <div class="row">Analyse des problèmes, proposition et mise en place d'actions correctives</div>
-          <div class="row">Relations utilisateurs et prestataires (logiciels de production &amp; logistique)</div>
-          <div class="row">Rédaction des documents et supports techniques, assistance et formation des utilisateurs</div>
-          <div class="row">Mise en production et maintenance des solutions</div>
-        </div>
-        <div class="sb"><div class="sl">Réalisations</div>
-          <div class="row">Application Flutter d'impression en magasin (HP, Zebra, PostgreSQL, SQLite, API) — étude, cahier des charges, dev, déploiement</div>
-          <div class="row">Migration Chorus : refonte complète du script de transfert de Ruby vers Python (étude de A à Z, API PISTE)</div>
-          <div class="row">Outil BI complet sur QlikSense (ETL, PostgreSQL, MySQL, SQLite, API, Windows Server)</div>
-          <div class="row">Extension VSCode pour développeurs Pick (D3 Rocket Software)</div>
-          <div class="row">Intégration Shopify (Web API)</div>
-          <div class="row">Maintenance et évolution de l'ancienne app d'impression (Windev, WLangage, HFSQL)</div>
-          <div class="row">Maintenance et évolution de l'ERP (Pick Basic, SGBDR MV)</div>
-          <div class="row">Référent NF525 — audit annuel de certification caisse</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags">
-            <span class="tag hi">Flutter</span><span class="tag hi">Dart</span>
-            <span class="tag">Windows Server</span><span class="tag hi">QlikSense</span><span class="tag hi">QlikScript</span>
-            <span class="tag">Python</span><span class="tag">Ruby</span><span class="tag">Windev / WLangage</span>
-            <span class="tag">D3 Rocket Software</span><span class="tag">Pick Basic</span><span class="tag">SGBDR MV</span>
-            <span class="tag">PostgreSQL</span><span class="tag">SQLite</span><span class="tag">MySQL</span><span class="tag">HFSQL</span>
-            <span class="tag">API REST</span><span class="tag">ETL</span><span class="tag">Design Patterns</span>
-            <span class="tag">Shopify</span><span class="tag">Chorus / PISTE</span><span class="tag">NF525</span><span class="tag">SOTI</span>
-            <span class="tag new">GitLab</span><span class="tag new">CI/CD</span><span class="tag new">Docker</span><span class="tag new">Docker-compose</span>
-            <span class="tag">VSCode Extension</span><span class="tag">Android Studio</span>
-            <span class="tag">Linux / Redhat</span><span class="tag">Méthode Agile</span><span class="tag">Cycle en V</span>
-          </div>
+      <div class="ds"><div class="ds-label">Description</div><p class="ds-text">Marque française historique du papier peint (fondée en 1969) — développement et maintenance de l'ensemble des outils numériques internes.</p></div>
+      <div class="ds"><div class="ds-label">Évolution des responsabilités</div>
+        <table class="evo"><thead><tr><th>Période</th><th>Rôle(s)</th><th>Technologies ajoutées</th></tr></thead><tbody>
+          <tr><td>2019</td><td>Développeur ERP</td><td><span class="tp new">D3 Rocket Software</span><span class="tp new">Pick Basic</span><span class="tp new">SGBDR MV</span></td></tr>
+          <tr><td>2020</td><td>Développeur ERP · Data Architect · Data Analyst · Data Scientist</td><td><span class="tp new">Qlik</span><span class="tp new">QlikScript</span><span class="tp new">ETL</span><span class="tp new">PostgreSQL</span></td></tr>
+          <tr><td>2021</td><td>Développeur ERP · Data · Développeur · Référent NF525</td><td><span class="tp new">QlikSense</span><span class="tp new">Python</span><span class="tp new">Chorus / PISTE</span><span class="tp">Ruby → Python</span></td></tr>
+          <tr><td>2024</td><td>Développeur ERP · Data · Référent NF525 · Développeur mobile</td><td><span class="tp new">Flutter</span><span class="tp new">Dart</span><span class="tp new">SQLite</span><span class="tp new">HP / Zebra</span></td></tr>
+          <tr><td>2025–2026</td><td>Développeur Web</td><td><span class="tp new">Shopify</span><span class="tp new">Web API</span><span class="tp new">GitLab</span><span class="tp new">CI/CD</span><span class="tp new">Docker</span><span class="tp new">Docker-compose</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="ds"><div class="ds-label">Missions</div>
+        <div class="ds-row">Analyse des besoins métier, rédaction des spécifications techniques et fonctionnelles</div>
+        <div class="ds-row">Définition et réalisation des phases de tests (techniques, fonctionnels)</div>
+        <div class="ds-row">Analyse des problèmes, proposition et mise en place d'actions correctives</div>
+        <div class="ds-row">Relations utilisateurs et prestataires (logiciels de production &amp; logistique)</div>
+        <div class="ds-row">Rédaction des documents et supports techniques, assistance et formation des utilisateurs</div>
+        <div class="ds-row">Mise en production et maintenance des solutions</div>
+      </div>
+      <div class="ds"><div class="ds-label">Réalisations</div>
+        <div class="ds-row">Application Flutter d'impression en magasin (HP, Zebra, PostgreSQL, SQLite, API) — étude, CDC, dev, déploiement</div>
+        <div class="ds-row">Migration Chorus : refonte complète Ruby → Python (étude de A à Z, API PISTE)</div>
+        <div class="ds-row">Outil BI complet QlikSense (ETL, PostgreSQL, MySQL, SQLite, API, Windows Server)</div>
+        <div class="ds-row">Extension VSCode pour développeurs Pick (D3 Rocket Software)</div>
+        <div class="ds-row">Intégration Shopify (Web API)</div>
+        <div class="ds-row">Maintenance et évolution ERP (Pick Basic, SGBDR MV) et ancienne app impression (Windev, HFSQL)</div>
+        <div class="ds-row">Référent NF525 — audit annuel de certification caisse</div>
+      </div>
+      <div class="ds"><div class="ds-label">Stack</div>
+        <div class="stack-grid">
+          <div class="sg"><div class="sg-label">Mobile</div><div class="sg-pills"><span class="sp">Flutter</span><span class="sp">Dart</span><span class="sp">Android Studio</span></div></div>
+          <div class="sg"><div class="sg-label">Data / BI</div><div class="sg-pills"><span class="sp">QlikSense</span><span class="sp">QlikScript</span><span class="sp">ETL</span></div></div>
+          <div class="sg"><div class="sg-label">Backend</div><div class="sg-pills"><span class="sp">Python</span><span class="sp">Ruby</span><span class="sp">Pick Basic</span><span class="sp">D3 Rocket</span></div></div>
+          <div class="sg"><div class="sg-label">Bases de données</div><div class="sg-pills"><span class="sp">PostgreSQL</span><span class="sp">SQLite</span><span class="sp">MySQL</span><span class="sp">HFSQL</span><span class="sp">SGBDR MV</span></div></div>
+          <div class="sg"><div class="sg-label">Web</div><div class="sg-pills"><span class="sp">Shopify</span><span class="sp">API REST</span><span class="sp">Windev</span></div></div>
+          <div class="sg"><div class="sg-label">DevOps</div><div class="sg-pills"><span class="sp">Docker</span><span class="sp">GitLab</span><span class="sp">CI/CD</span><span class="sp">Linux</span><span class="sp">VSCode Ext.</span></div></div>
+          <div class="sg"><div class="sg-label">Métier</div><div class="sg-pills"><span class="sp">Chorus / PISTE</span><span class="sp">NF525</span><span class="sp">SOTI</span><span class="sp">Design Patterns</span></div></div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="divider"></div>
-
-    <!-- IRLANDE -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#2dd4a0"></div>
-        <span class="co-name">Séjour en Irlande</span>
-        <span class="sector">Mobilité / Linguistique</span>
-        <div class="co-meta">01/2019 – 02/2019 <span class="badge b-interlude">Interlude</span></div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Séjour linguistique + recherche d'emploi</span><span class="role-date">16/01/2019 – 14/02/2019</span></div>
-        <div class="sb"><div class="sl">Activités</div>
-          <div class="row">Immersion complète en environnement anglophone — amélioration de la compréhension et de la communication</div>
-          <div class="row">Recherche d'opportunités professionnelles dans le secteur informatique en contexte international</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- JFA -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#1D9E75"></div>
-        <span class="co-name">JFA</span>
-        <span class="sector">Agroalimentaire</span>
-        <div class="co-meta">03/2016 – 01/2019</div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Analyste-programmeur</span><span class="role-date">01/12/2017 – 04/01/2019</span></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Conception et développement d'applications internes</div>
-          <div class="row">Définition et réalisation des phases de tests techniques et fonctionnels</div>
-          <div class="row">Analyse des problèmes et mise en place d'actions correctives</div>
-          <div class="row">Rédaction des documents et supports techniques</div>
-        </div>
-        <div class="sb"><div class="sl">Réalisations</div>
-          <div class="row">Application de gestion de produit (VBA Office, Excel, Microsoft Access)</div>
-          <div class="row">Application d'edition d'étiquette (React JS, API, imprimantes Zebra)</div>
-          <div class="row">Maintenance et évolution de l'ERP SAP (ABAP)</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">SAP</span><span class="tag">ABAP</span><span class="tag">React JS</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">SQL</span><span class="tag">EDI</span></div>
-        </div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Assistant utilisateurs</span><span class="role-date">01/03/2016 – 30/11/2017</span></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Assistance et formation des utilisateurs sur les logiciels métier</div>
-          <div class="row">Relais entre utilisateurs et prestataires pour les logiciels de production &amp; logistique</div>
-          <div class="row">Analyse des problèmes fonctionnels et rédaction des fiches correctives</div>
-          <div class="row">Élaboration des supports techniques à destination des utilisateurs</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">SAP</span><span class="tag">VBA Office</span><span class="tag">Microsoft Access</span><span class="tag">SQL</span><span class="tag">EDI</span><span class="tag">Windows Server</span><span class="tag">Excel</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- BONANZA -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#5baef5"></div>
-        <span class="co-name">Bonanza</span>
-        <span class="sector">Web / Digital</span>
-        <div class="co-meta">03/2016 – 02/2017 <span class="badge b-prev">Soirée / Week-end</span></div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Développeur Web</span><span class="role-date">04/03/2016 – 18/02/2017</span></div>
-        <div class="sb"><div class="sl">Contexte</div><div class="row">Activité exercée en soirée / week-end</div></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Développement front-end en React — conception d'interfaces utilisateurs</div>
-          <div class="row">Gestion des états et des composants, respect des normes d'ergonomie</div>
-          <div class="row">Tests unitaires et fonctionnels, résolution de bugs</div>
-          <div class="row">Travail sur l'intégration front/back, amélioration des performances</div>
-          <div class="row">Suivi de l'évolution de l'application et maintenance corrective</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">ReactJS</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Tests unitaires</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- ARPITEC -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#D85A30"></div>
-        <span class="co-name">ARPITEC</span>
-        <span class="sector">Ingénierie industrielle / Robotique</span>
-        <div class="co-meta">08/2013 – 12/2015</div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Technicien en automatisme &amp; robotique</span><span class="role-date">01/08/2013 – 22/12/2015</span><span class="badge b-prev">~95% du temps</span></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Configuration, mise au point et programmation de robots industriels multi-marques</div>
-          <div class="row">Conception et réalisation de prototypes, validation après tests</div>
-          <div class="row">Gestion de projet d'industrialisation : faisabilité, programmation hors-ligne (CAO), mise en service</div>
-          <div class="row">Étude et conception de systèmes automatisés et robotisés</div>
-          <div class="row">Rédaction des documentations techniques</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">ABB</span><span class="tag">Kuka</span><span class="tag">Staubli</span><span class="tag">Fanuc</span><span class="tag">Universal Robot</span><span class="tag">Simulation 3D / CAO</span><span class="tag">Programmation hors-ligne</span></div>
-        </div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Développeur (ponctuel)</span><span class="role-date">01/08/2013 – 22/12/2015</span><span class="badge b-prev">~5% du temps</span></div>
-        <div class="sb"><div class="sl">Réalisations</div><div class="row">Application C++ de gestion des salariés (Visual Studio, Windows)</div></div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">C++</span><span class="tag">Visual Studio</span><span class="tag">Windows</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- NIKKO -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#BA7517"></div>
-        <span class="co-name">NIKKO RACING</span>
-        <span class="sector">E-commerce / Auto</span>
-        <div class="co-meta">08/2012 – 09/2012 <span class="badge b-stage">Stage</span></div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Développeur Web</span><span class="role-date">08/2012 – 09/2012</span></div>
-        <div class="sb"><div class="sl">Description</div><div class="row">Magasin de pièces automobiles à Folkling — stage de fin d'études</div></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Développement, correction et optimisation du site e-commerce</div>
-          <div class="row">Assistance et formation des utilisateurs</div>
-        </div>
-        <div class="sb"><div class="sl">Réalisations</div><div class="row">Maintenance et évolution du site Prestashop</div></div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">Prestashop</span><span class="tag">PHP</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">MySQL</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- STEF -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#378ADD"></div>
-        <span class="co-name">STEF-TFE</span>
-        <span class="sector">Logistique du froid</span>
-        <div class="co-meta">01/2011 – 10/2011 <span class="badge b-stage">Stage</span></div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Analyste-programmeur</span><span class="role-date">01/2011 – 10/2011</span></div>
-        <div class="sb"><div class="sl">Description</div><div class="row">Leader français de la logistique sous température dirigée — stage de fin d'études</div></div>
-        <div class="sb"><div class="sl">Missions</div>
-          <div class="row">Développement, correction et optimisation d'un outil de gestion interne</div>
-          <div class="row">Analyse des besoins, tests, assistance utilisateurs</div>
-        </div>
-        <div class="sb"><div class="sl">Réalisations</div><div class="row">Création de l'outil de gestion des gerbeurs (Access, VBA, SQL)</div></div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">Microsoft Access</span><span class="tag">VBA Office</span><span class="tag">SQL</span><span class="tag">Windows</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- PERSO / FREELANCE -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#888780"></div>
+    <!-- PERSO -->
+    <section class="co-section" id="perso">
+      <div class="co-header">
+        <div class="co-dot" style="background:#888780"></div>
         <span class="co-name">Perso / Freelance</span>
-        <span class="sector">Projets personnels</span>
+        <span class="sector-badge">Projets personnels</span>
         <div class="co-meta">En continu</div>
       </div>
-      <div class="role">
+      <div class="role-block">
         <div class="role-head"><span class="role-title">Développeur Web</span><span class="role-date">2017 – Aujourd'hui</span></div>
-        <div class="sb"><div class="sl">Réalisations</div>
-          <div class="row">Site de dashboarding local (ReactJS, Raspberry Pi)</div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Site de dashboarding local (ReactJS, Raspberry Pi)</div>
         </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">ReactJS</span><span class="tag">JavaScript</span><span class="tag">Raspberry Pi</span></div>
-        </div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Développeur mobile</span><span class="role-date">2018 – Aujourd'hui</span></div>
-        <div class="sb"><div class="sl">Réalisations</div>
-          <div class="row">Véhicule télécommandé par smartphone (Arduino + Flutter)</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Arduino</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- ASSOCIATIF ADD -->
-    <div class="company">
-      <div class="company-header">
-        <div class="dot" style="background:#9B7FDD"></div>
-        <span class="co-name">Associatif (ADD)</span>
-        <span class="sector">Bénévolat</span>
-        <div class="co-meta">01/2022 – Aujourd'hui</div>
-      </div>
-      <div class="role">
-        <div class="role-head"><span class="role-title">Développeur mobile</span><span class="badge b-active" style="margin-left:0">Projet phare</span></div>
-        <div class="sb"><div class="sl">Description</div>
-          <div class="row">Association d'aide alimentaire et sociale (principe similaire aux Restos du Cœur — dons de colis) — développement d'une application de gestion des foyers, dossiers et documents administratifs</div>
-
-        </div>
-        <div class="sb"><div class="sl">Réalisations</div>
-          <div class="row">Gestion de foyers et de dossiers par saison (référent, conjoint, enfants)</div>
-          <div class="row">Design pattern snapshot — état du foyer figé à la création du dossier</div>
-          <div class="row">Logique de validation de documents (ET entre groupes, OU à l'intérieur)</div>
-          <div class="row">CI/CD — déploiement continu via GitHub Actions et Docker</div>
-        </div>
-        <div class="sb"><div class="sl">Compétences / Technologies</div>
-          <div class="tags">
-            <span class="tag hi">Flutter</span><span class="tag hi">Dart</span><span class="tag hi">Supabase</span>
-            <span class="tag">Clean Architecture</span><span class="tag">Design Patterns</span>
-            <span class="tag">PostgreSQL</span><span class="tag">JSONB</span>
-            <span class="tag new">GitHub Actions</span><span class="tag new">Docker</span><span class="tag new">CI/CD</span>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Front-end</div><div class="sg-pills"><span class="sp">ReactJS</span><span class="sp">JavaScript</span></div></div>
+            <div class="sg"><div class="sg-label">Hardware</div><div class="sg-pills"><span class="sp">Raspberry Pi</span></div></div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Développeur mobile</span><span class="role-date">2018 – Aujourd'hui</span></div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Véhicule télécommandé par smartphone (Arduino + Flutter)</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Mobile</div><div class="sg-pills"><span class="sp">Flutter</span><span class="sp">Dart</span></div></div>
+            <div class="sg"><div class="sg-label">Embarqué</div><div class="sg-pills"><span class="sp">Arduino</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  </div><!-- /resume-section -->
-</div><!-- /wrap -->
+    <!-- ADD -->
+    <section class="co-section" id="add">
+      <div class="co-header">
+        <div class="co-dot" style="background:#9B7FDD"></div>
+        <span class="co-name">Associatif (ADD)</span>
+        <span class="sector-badge">Bénévolat</span>
+        <div class="co-meta">01/2022 – Aujourd'hui <span class="badge b-phare">Projet phare</span></div>
+      </div>
+      <div class="ds"><div class="ds-label">Description</div>
+        <p class="ds-text">Association d'aide alimentaire et sociale (principe similaire aux Restos du Cœur — dons de colis) — développement d'une application de gestion des foyers, dossiers et documents administratifs.</p>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Développeur mobile</span></div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Gestion de foyers et de dossiers par saison (référent, conjoint, enfants)</div>
+          <div class="ds-row">Design pattern snapshot — état du foyer figé à la création du dossier</div>
+          <div class="ds-row">Logique de validation de documents (ET entre groupes, OU à l'intérieur)</div>
+          <div class="ds-row">CI/CD — déploiement continu via GitHub Actions et Docker</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Mobile</div><div class="sg-pills"><span class="sp">Flutter</span><span class="sp">Dart</span></div></div>
+            <div class="sg"><div class="sg-label">Backend / DB</div><div class="sg-pills"><span class="sp">Supabase</span><span class="sp">PostgreSQL</span><span class="sp">JSONB</span></div></div>
+            <div class="sg"><div class="sg-label">Architecture</div><div class="sg-pills"><span class="sp">Clean Architecture</span><span class="sp">Design Patterns</span></div></div>
+            <div class="sg"><div class="sg-label">DevOps</div><div class="sg-pills"><span class="sp">GitHub Actions</span><span class="sp">Docker</span><span class="sp">CI/CD</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IRLANDE -->
+    <section class="co-section" id="irlande">
+      <div class="co-header">
+        <div class="co-dot" style="background:#2dd4a0"></div>
+        <span class="co-name">Séjour en Irlande</span>
+        <span class="sector-badge">Mobilité / Linguistique</span>
+        <div class="co-meta">01/2019 – 02/2019 <span class="badge b-interlude">Interlude</span></div>
+      </div>
+      <div class="ds"><div class="ds-label">Activités</div>
+        <div class="ds-row">Immersion complète en environnement anglophone — amélioration de la compréhension et de la communication</div>
+        <div class="ds-row">Recherche d'opportunités professionnelles dans le secteur informatique en contexte international</div>
+      </div>
+    </section>
+
+    <!-- JFA -->
+    <section class="co-section" id="jfa">
+      <div class="co-header">
+        <div class="co-dot" style="background:#1D9E75"></div>
+        <span class="co-name">JFA</span>
+        <span class="sector-badge">Agroalimentaire</span>
+        <div class="co-meta">03/2016 – 01/2019</div>
+      </div>
+      <div class="ds"><div class="ds-label">Description</div><p class="ds-text">Fabrication de jus et nectars de fruits — conditionnement en bouteilles et briques carton.</p></div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Analyste-programmeur</span><span class="role-date">01/12/2017 – 04/01/2019</span></div>
+        <div class="ds"><div class="ds-label">Missions</div>
+          <div class="ds-row">Conception et développement d'applications internes</div>
+          <div class="ds-row">Définition et réalisation des phases de tests techniques et fonctionnels</div>
+          <div class="ds-row">Analyse des problèmes et mise en place d'actions correctives</div>
+          <div class="ds-row">Rédaction des documents et supports techniques</div>
+        </div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Application de gestion de produit (VBA Office, Excel, Microsoft Access)</div>
+          <div class="ds-row">Application d'édition d'étiquette (React JS, API, imprimantes Zebra)</div>
+          <div class="ds-row">Maintenance et évolution de l'ERP SAP (ABAP)</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">ERP</div><div class="sg-pills"><span class="sp">SAP</span><span class="sp">ABAP</span></div></div>
+            <div class="sg"><div class="sg-label">Web / Front</div><div class="sg-pills"><span class="sp">React JS</span><span class="sp">HTML</span><span class="sp">CSS</span><span class="sp">JavaScript</span></div></div>
+            <div class="sg"><div class="sg-label">Données</div><div class="sg-pills"><span class="sp">SQL</span><span class="sp">EDI</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Assistant utilisateurs</span><span class="role-date">01/03/2016 – 30/11/2017</span></div>
+        <div class="ds"><div class="ds-label">Missions</div>
+          <div class="ds-row">Assistance et formation des utilisateurs sur les logiciels métier</div>
+          <div class="ds-row">Relais entre utilisateurs et prestataires pour les logiciels de production &amp; logistique</div>
+          <div class="ds-row">Analyse des problèmes fonctionnels et rédaction des fiches correctives</div>
+          <div class="ds-row">Élaboration des supports techniques à destination des utilisateurs</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">ERP / Bureau</div><div class="sg-pills"><span class="sp">SAP</span><span class="sp">VBA Office</span><span class="sp">Excel</span><span class="sp">Microsoft Access</span></div></div>
+            <div class="sg"><div class="sg-label">Données / Réseau</div><div class="sg-pills"><span class="sp">SQL</span><span class="sp">EDI</span><span class="sp">Windows Server</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BONANZA -->
+    <section class="co-section" id="bonanza">
+      <div class="co-header">
+        <div class="co-dot" style="background:#5baef5"></div>
+        <span class="co-name">Bonanza</span>
+        <span class="sector-badge">Web / Digital</span>
+        <div class="co-meta">03/2016 – 02/2017 <span class="badge b-prev">Soirée / Week-end</span></div>
+      </div>
+      <div class="ds"><div class="ds-label">Contexte</div><p class="ds-text">Activité exercée en soirée / week-end, en parallèle du poste CDI chez JFA.</p></div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Développeur Web</span><span class="role-date">04/03/2016 – 18/02/2017</span></div>
+        <div class="ds"><div class="ds-label">Missions</div>
+          <div class="ds-row">Développement front-end en React — conception d'interfaces utilisateurs</div>
+          <div class="ds-row">Gestion des états et des composants, respect des normes d'ergonomie</div>
+          <div class="ds-row">Tests unitaires et fonctionnels, résolution de bugs</div>
+          <div class="ds-row">Travail sur l'intégration front/back, amélioration des performances</div>
+          <div class="ds-row">Suivi de l'évolution de l'application et maintenance corrective</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Front-end</div><div class="sg-pills"><span class="sp">ReactJS</span><span class="sp">JavaScript</span><span class="sp">HTML</span><span class="sp">CSS</span></div></div>
+            <div class="sg"><div class="sg-label">Qualité</div><div class="sg-pills"><span class="sp">Tests unitaires</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARPITEC -->
+    <section class="co-section" id="arpitec">
+      <div class="co-header">
+        <div class="co-dot" style="background:#D85A30"></div>
+        <span class="co-name">ARPITEC</span>
+        <span class="sector-badge">Ingénierie industrielle / Robotique</span>
+        <div class="co-meta">08/2013 – 12/2015</div>
+      </div>
+      <div class="ds"><div class="ds-label">Description</div><p class="ds-text">Prestataire spécialisé dans la programmation de robots industriels et la simulation 3D de systèmes automatisés.</p></div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Technicien en automatisme &amp; robotique</span><span class="role-date">01/08/2013 – 22/12/2015</span><span class="badge b-prev">~95% du temps</span></div>
+        <div class="ds"><div class="ds-label">Missions</div>
+          <div class="ds-row">Configuration, mise au point et programmation de robots industriels multi-marques</div>
+          <div class="ds-row">Conception et réalisation de prototypes, validation après tests</div>
+          <div class="ds-row">Gestion de projet d'industrialisation : faisabilité, programmation hors-ligne (CAO), mise en service</div>
+          <div class="ds-row">Étude et conception de systèmes automatisés et robotisés</div>
+          <div class="ds-row">Rédaction des documentations techniques</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Robots</div><div class="sg-pills"><span class="sp">ABB</span><span class="sp">Kuka</span><span class="sp">Staubli</span><span class="sp">Fanuc</span><span class="sp">Universal Robot</span></div></div>
+            <div class="sg"><div class="sg-label">Outils</div><div class="sg-pills"><span class="sp">Simulation 3D / CAO</span><span class="sp">Programmation hors-ligne</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Développeur (ponctuel)</span><span class="role-date">01/08/2013 – 22/12/2015</span><span class="badge b-prev">~5% du temps</span></div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Application C++ de gestion des salariés (Visual Studio, Windows)</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Développement</div><div class="sg-pills"><span class="sp">C++</span><span class="sp">Visual Studio</span><span class="sp">Windows</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NIKKO -->
+    <section class="co-section" id="nikko">
+      <div class="co-header">
+        <div class="co-dot" style="background:#BA7517"></div>
+        <span class="co-name">NIKKO RACING</span>
+        <span class="sector-badge">E-commerce / Auto</span>
+        <div class="co-meta">08/2012 – 09/2012 <span class="badge b-stage">Stage</span></div>
+      </div>
+      <div class="ds"><div class="ds-label">Description</div><p class="ds-text">Magasin de pièces automobiles à Folkling — stage de fin d'études.</p></div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Développeur Web</span><span class="role-date">08/2012 – 09/2012</span></div>
+        <div class="ds"><div class="ds-label">Missions</div>
+          <div class="ds-row">Développement, correction et optimisation du site e-commerce</div>
+          <div class="ds-row">Assistance et formation des utilisateurs</div>
+        </div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Maintenance et évolution du site Prestashop</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">E-commerce</div><div class="sg-pills"><span class="sp">Prestashop</span><span class="sp">PHP</span><span class="sp">MySQL</span></div></div>
+            <div class="sg"><div class="sg-label">Front-end</div><div class="sg-pills"><span class="sp">HTML</span><span class="sp">CSS</span><span class="sp">JavaScript</span><span class="sp">jQuery</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEF -->
+    <section class="co-section" id="stef">
+      <div class="co-header">
+        <div class="co-dot" style="background:#378ADD"></div>
+        <span class="co-name">STEF-TFE</span>
+        <span class="sector-badge">Logistique du froid</span>
+        <div class="co-meta">01/2011 – 10/2011 <span class="badge b-stage">Stage</span></div>
+      </div>
+      <div class="ds"><div class="ds-label">Description</div><p class="ds-text">Leader français de la logistique sous température dirigée — stage de fin d'études.</p></div>
+      <div class="role-block">
+        <div class="role-head"><span class="role-title">Analyste-programmeur</span><span class="role-date">01/2011 – 10/2011</span></div>
+        <div class="ds"><div class="ds-label">Missions</div>
+          <div class="ds-row">Développement, correction et optimisation d'un outil de gestion interne</div>
+          <div class="ds-row">Analyse des besoins, tests, assistance utilisateurs</div>
+        </div>
+        <div class="ds"><div class="ds-label">Réalisations</div>
+          <div class="ds-row">Création de l'outil de gestion des gerbeurs (Access, VBA, SQL)</div>
+        </div>
+        <div class="ds"><div class="ds-label">Stack</div>
+          <div class="stack-grid">
+            <div class="sg"><div class="sg-label">Développement</div><div class="sg-pills"><span class="sp">Microsoft Access</span><span class="sp">VBA Office</span><span class="sp">SQL</span><span class="sp">Windows</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+</div>
 
 <script>
-const S=2011, E=2026.7, T=E-S;
-function L(y){return((y-S)/T*100).toFixed(3)+'%';}
-function W(a,b){return((b-a)/T*100).toFixed(3)+'%';}
+/* ── TIMELINE ── */
+const S=2011,E=2026.7,T=E-S;
 function ty(s){const[m,y]=s.split('/');return+y+(+m-1)/12;}
-
 const companies=[
-  {name:'STEF-TFE',sector:'Logistique du froid',rows:[
-    {label:'Analyste-programmeur',bars:[{from:'01/2011',to:'10/2011',color:'#378ADD'}]}
-  ]},
-  {name:'NIKKO RACING',sector:'E-commerce / Auto',rows:[
-    {label:'Développeur Web',bars:[{from:'08/2012',to:'09/2012',color:'#BA7517'}]}
-  ]},
-  {name:'ARPITEC',sector:'Robotique industrielle',rows:[
-    {label:'Technicien en automatisme',bars:[{from:'08/2013',to:'12/2015',color:'#D85A30'}]},
-    {label:'Développeur',bars:[{from:'08/2013',to:'12/2015',color:'#F0997B'}]},
-  ]},
-  {name:'Bonanza',sector:'Web / Digital',rows:[
-    {label:'Développeur Web',bars:[{from:'03/2016',to:'02/2017',color:'#5baef5'}]}
-  ]},
-  {name:'JFA',sector:'Agroalimentaire',rows:[
-    {label:'Assistant utilisateurs',bars:[{from:'03/2016',to:'11/2017',color:'#1D9E75'}]},
-    {label:'Analyste-programmeur',bars:[{from:'12/2017',to:'01/2019',color:'#0F6E56'}]},
-  ]},
-  {name:'Irlande',sector:'Séjour linguistique',rows:[
-    {label:'Séjour + recherche emploi',bars:[{from:'01/2019',to:'02/2019',color:'#2dd4a0'}]}
-  ]},
   {name:'4MURS',sector:'Retail / Déco intérieure',rows:[
     {label:'Développeur ERP',bars:[{from:'03/2019',to:'06/2026',color:'#C4BFF5'}]},
     {label:'Data Architect / BI',bars:[{from:'01/2020',to:'06/2026',color:'#9B8FE4'}]},
     {label:'Développeur logiciel',bars:[{from:'01/2021',to:'06/2026',color:'#7F77DD'}]},
     {label:'Référent NF525',bars:[{from:'01/2021',to:'06/2026',color:'#534AB7'}]},
     {label:'Développeur mobile',bars:[{from:'01/2024',to:'06/2026',color:'#3C3489'}]},
-    {label:'Développeur Web',bars:[{from:'01/2025',to:'06/2026',color:'#26215C'}]},
-  ]},
-  {name:'Perso / Freelance',sector:'Projets personnels',rows:[
-    {label:'Développeur Web',bars:[{from:'01/2017',to:'06/2026',color:'#888780'}]},
-    {label:'Développeur mobile',bars:[{from:'01/2018',to:'06/2026',color:'#5F5E5A'}]},
-  ]},
-  {name:'Associatif (ADD)',sector:'Bénévolat',rows:[
-    {label:'Développeur mobile',bars:[{from:'01/2022',to:'06/2026',color:'#9B7FDD'}]},
-  ]},
+    {label:'Développeur Web',bars:[{from:'01/2025',to:'06/2026',color:'#26215C'}]}]},
+  {name:'Perso / Freelance',sector:'Projets personnels',rows:[{label:'Développeur Web',bars:[{from:'01/2017',to:'06/2026',color:'#888780'}]},{label:'Développeur mobile',bars:[{from:'01/2018',to:'06/2026',color:'#5F5E5A'}]}]},
+  {name:'Associatif (ADD)',sector:'Bénévolat',rows:[{label:'Développeur mobile',bars:[{from:'01/2022',to:'06/2026',color:'#9B7FDD'}]}]},
+  {name:'Irlande',sector:'Séjour linguistique',rows:[{label:'Séjour + recherche emploi',bars:[{from:'01/2019',to:'02/2019',color:'#2dd4a0'}]}]},
+  {name:'JFA',sector:'Agroalimentaire',rows:[{label:'Assistant utilisateurs',bars:[{from:'03/2016',to:'11/2017',color:'#1D9E75'}]},{label:'Analyste-programmeur',bars:[{from:'12/2017',to:'01/2019',color:'#0F6E56'}]}]},
+  {name:'Bonanza',sector:'Web / Digital',rows:[{label:'Développeur Web',bars:[{from:'03/2016',to:'02/2017',color:'#5baef5'}]}]},
+  {name:'ARPITEC',sector:'Robotique industrielle',rows:[{label:'Technicien en automatisme',bars:[{from:'08/2013',to:'12/2015',color:'#D85A30'}]},{label:'Développeur',bars:[{from:'08/2013',to:'12/2015',color:'#F0997B'}]}]},
+  {name:'NIKKO RACING',sector:'E-commerce / Auto',rows:[{label:'Développeur Web',bars:[{from:'08/2012',to:'09/2012',color:'#BA7517'}]}]},
+  {name:'STEF-TFE',sector:'Logistique du froid',rows:[{label:'Analyste-programmeur',bars:[{from:'01/2011',to:'10/2011',color:'#378ADD'}]}]},
 ];
-
 const cnt=document.getElementById('tl-container');
 cnt.style.cssText='position:relative;';
-
 const hdr=document.createElement('div');
-hdr.style.cssText='position:relative;height:18px;margin-left:190px;margin-bottom:8px;';
-for(let y=2011;y<=2027;y++){
-  const sp=document.createElement('span');
-  sp.style.cssText=`position:absolute;font-size:10px;font-family:'JetBrains Mono',monospace;color:#aaa;left:${((y-S)/T*100).toFixed(2)}%;transform:translateX(-50%);`;
-  sp.textContent=y;
-  hdr.appendChild(sp);
-}
+hdr.style.cssText='position:relative;height:16px;margin-left:155px;margin-bottom:6px;';
+for(let y=2011;y<=2027;y++){const sp=document.createElement('span');sp.style.cssText=`position:absolute;font-size:10px;font-family:'JetBrains Mono',monospace;color:#aaa;left:${((y-S)/T*100).toFixed(2)}%;transform:translateX(-50%);`;sp.textContent=y;hdr.appendChild(sp);}
 cnt.appendChild(hdr);
-
-const main=document.createElement('div');
-main.style.cssText='position:relative;';
-
-const grid=document.createElement('div');
-grid.style.cssText='position:absolute;top:0;bottom:0;left:190px;right:0;pointer-events:none;z-index:0;';
-for(let y=2011;y<=2027;y++){
-  const gl=document.createElement('div');
-  gl.style.cssText=`position:absolute;top:0;bottom:0;width:.5px;background:#e5e4e0;left:${((y-S)/T*100).toFixed(2)}%;`;
-  grid.appendChild(gl);
-}
-const now=document.createElement('div');
-now.style.cssText=`position:absolute;top:0;bottom:0;width:1.5px;background:#E24B4A;opacity:.4;z-index:5;left:${((2026.45-S)/T*100).toFixed(2)}%;`;
-const nowTxt=document.createElement('div');
-nowTxt.style.cssText='position:absolute;top:-16px;font-size:9px;color:#E24B4A;transform:translateX(-50%);font-family:monospace;';
-nowTxt.textContent='2026';
-now.appendChild(nowTxt);
-grid.appendChild(now);
-main.appendChild(grid);
-
+const main=document.createElement('div');main.style.cssText='position:relative;';
+const grid=document.createElement('div');grid.style.cssText='position:absolute;top:0;bottom:0;left:155px;right:0;pointer-events:none;z-index:0;';
+for(let y=2011;y<=2027;y++){const gl=document.createElement('div');gl.style.cssText=`position:absolute;top:0;bottom:0;width:.5px;background:#e5e4e0;left:${((y-S)/T*100).toFixed(2)}%;`;grid.appendChild(gl);}
+const now=document.createElement('div');now.style.cssText=`position:absolute;top:0;bottom:0;width:1.5px;background:#E24B4A;opacity:.4;z-index:5;left:${((2026.45-S)/T*100).toFixed(2)}%;`;grid.appendChild(now);main.appendChild(grid);
 companies.forEach((co,ci)=>{
-  if(ci>0){
-    const sep=document.createElement('div');
-    sep.style.cssText='height:.5px;background:#e5e4e0;margin:4px 0 4px 190px;opacity:.3;position:relative;z-index:1;';
-    main.appendChild(sep);
-  }
+  if(ci>0){const sep=document.createElement('div');sep.style.cssText='height:.5px;background:#e5e4e0;margin:3px 0 3px 155px;opacity:.3;position:relative;z-index:1;';main.appendChild(sep);}
   co.rows.forEach((row,ri)=>{
-    const rw=document.createElement('div');
-    rw.style.cssText='display:flex;align-items:center;margin-bottom:2px;position:relative;z-index:1;';
-    const nc=document.createElement('div');
-    nc.style.cssText='width:190px;flex-shrink:0;padding-right:14px;text-align:right;';
-    if(ri===0){
-      nc.innerHTML=`<div style="font-size:12px;font-weight:500;color:#1a1a18;line-height:1.35;">${co.name}</div><div style="font-size:10px;color:#aaa;margin-top:1px;">${co.sector}</div>`;
-    } else {
-      nc.innerHTML=`<div style="font-size:10px;color:#888;font-style:italic;line-height:1.35;">${row.label}</div>`;
-    }
-    const track=document.createElement('div');
-    track.style.cssText='flex:1;position:relative;height:22px;';
+    const rw=document.createElement('div');rw.style.cssText='display:flex;align-items:center;margin-bottom:2px;position:relative;z-index:1;';
+    const nc=document.createElement('div');nc.style.cssText='width:150px;flex-shrink:0;padding-right:8px;text-align:right;';
+    if(ri===0){nc.innerHTML=`<div style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.3;">${co.name}</div><div style="font-size:10px;color:#aaa;">${co.sector}</div>`;}
+    else{nc.innerHTML=`<div style="font-size:10px;color:#888;font-style:italic;">${row.label}</div>`;}
+    const track=document.createElement('div');track.style.cssText='flex:1;position:relative;height:18px;';
     row.bars.forEach(bar=>{
       const f=ty(bar.from),t2=ty(bar.to);
       const bd=document.createElement('div');
-      bd.style.cssText=`position:absolute;top:2px;height:18px;border-radius:4px;left:${((f-S)/T*100).toFixed(3)}%;width:${((t2-f)/T*100).toFixed(3)}%;background:${bar.color};z-index:2;`;
+      bd.style.cssText=`position:absolute;top:1px;height:16px;border-radius:3px;left:${((f-S)/T*100).toFixed(3)}%;width:${((t2-f)/T*100).toFixed(3)}%;background:${bar.color};z-index:2;`;
       bd.title=`${row.label} · ${bar.from} → ${bar.to}`;
       bd.onmouseenter=()=>{bd.style.filter='brightness(1.12)';bd.style.zIndex=10;};
       bd.onmouseleave=()=>{bd.style.filter='';bd.style.zIndex=2;};
-      track.appendChild(bd);
-    });
-    rw.appendChild(nc);
-    rw.appendChild(track);
-    main.appendChild(rw);
+      track.appendChild(bd);});
+    rw.appendChild(nc);rw.appendChild(track);main.appendChild(rw);});});
+cnt.appendChild(main);
+
+/* ── SCROLL SPY ── */
+const sections=document.querySelectorAll('.co-section');
+const sbItems=document.querySelectorAll('.sb-item');
+const sbTopLink=document.getElementById('link-chronologie');
+const contentEl=document.getElementById('content');
+
+function updateActive(){
+  const scrollTop=contentEl.scrollTop;
+  let current='';
+  sections.forEach(s=>{
+    if(s.offsetTop - contentEl.offsetTop - scrollTop <= 40) current=s.id;
+  });
+  sbTopLink.classList.toggle('active',current==='chronologie');
+  sbItems.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
+}
+
+contentEl.addEventListener('scroll',updateActive,{passive:true});
+updateActive();
+
+sbItems.forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=document.getElementById(a.getAttribute('href').slice(1));
+    if(target) contentEl.scrollTo({top:target.offsetTop - contentEl.offsetTop - 16, behavior:'smooth'});
   });
 });
-cnt.appendChild(main);
+
+sbTopLink.addEventListener('click',e=>{
+  e.preventDefault();
+  contentEl.scrollTo({top:0,behavior:'smooth'});
+});
 </script>
 </body>
 </html>
